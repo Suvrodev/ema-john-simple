@@ -1,0 +1,7 @@
+*{
+    color: black;
+}
+.ShopContent{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
