@@ -11,3 +11,21 @@
     grid-gap: 45px;
     margin: 50px;
 }
+
+/* .Checkdiv{
+    background-color: green;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 250px;
+    margin: 10px auto;
+} */
+@media only screen and (max-width: 576px) {
+    .ShopContent{
+        grid-template-columns: 3fr 1fr;
+    }
+
+    .Product_Container{
+        grid-template-columns: repeat(1,1fr );
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getShoppingCart } from '../../Copy/utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -21,9 +22,18 @@ const Shop = () => {
         //console.log('Product Added: '+props.name)
         const newCart=[...cart,product]
         setCart(newCart)
+        addToDb(product.id)
     }
 
+    useEffect(()=>{
+        const StoredCart=getShoppingCart()
+        console.log(StoredCart)
+    },[])
+
     return (
+        // <div>
+        //      <div className='Checkdiv'> This is Check MArgin </div>
+        // </div>
         <div className='ShopContent' >
             <div className="Product_Container">
                 {
