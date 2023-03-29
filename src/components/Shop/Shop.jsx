@@ -25,10 +25,12 @@ const Shop = () => {
         addToDb(product.id)
     }
 
-    useEffect(()=>{
-        const StoredCart=getShoppingCart()
-        console.log(StoredCart)
-    },[])
+   useEffect(()=>{
+      
+      const storedCard=getShoppingCart();
+      console.log('Stored Cart');
+      console.log(storedCard);
+   },[])
 
     return (
         // <div>
