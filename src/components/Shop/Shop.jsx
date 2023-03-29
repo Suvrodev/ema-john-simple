@@ -8,8 +8,6 @@ import './Shop.css'
 
 const Shop = () => {
     const [products,setProducts]=useState([])
-  
-
 
     useEffect(()=>{
         fetch('products.json')
@@ -25,22 +23,43 @@ const Shop = () => {
         addToDb(product.id)
     }
 
-   useEffect(()=>{
-     const StoredCart=getShoppingCart()
-     const SavedCart=[];
-
-     for(const id in StoredCart){
-        const addedProduct=products.find(product=>product.id===id)
-        if(addedProduct){
-            const quantity=StoredCart[id]
-            addedProduct.quantity=quantity;
-            SavedCart.push(addedProduct)
+    useEffect(()=>{
+        const savedCart=[];
+        console.log('Products: ',products)
+        const storedCart=getShoppingCart();
+        console.log(storedCart)
+        console.log('ID: ')
+        for(const id in storedCart){
+            //console.log(id)
+            const addedProduct=products.find(product=>product.id===id)
+            if(addedProduct){
+                const quantity=storedCart[id];
+                addedProduct.quantity=quantity;
+               // console.log(addedProduct)
+                savedCart.push(addedProduct)
+            }
+           
         }
-       // console.log("Added Product: ",addedProduct)
-     }
+        setCart(savedCart)
+    },[products])
 
-     setCart(SavedCart)
-   },[products])
+
+//    useEffect(()=>{
+//      const StoredCart=getShoppingCart()
+//      const SavedCart=[];
+
+//      for(const id in StoredCart){
+//         const addedProduct=products.find(product=>product.id===id)
+//         if(addedProduct){
+//             const quantity=StoredCart[id]
+//             addedProduct.quantity=quantity;
+//             SavedCart.push(addedProduct)
+//         }
+//        // console.log("Added Product: ",addedProduct)
+//      }
+
+//      setCart(SavedCart)
+//    },[products])
 
     return (
         // <div>
